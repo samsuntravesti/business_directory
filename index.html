@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="UTF-8">
 		<title>Business Directory</title>
-		<link rel="stylesheet" type="text/css" href="css/main.css">
-		<script type="text/javascript" src="js/main.js"></script>
+		<link rel="stylesheet" href="styles/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="styles/main.css">		
+
+		<script type="text/javascript" src="scripts/jquery-2.2.2.min.js"></script>
+		<script type="text/javascript" src="scripts/bootstrap.js"></script>
+		<script type="text/javascript" src="scripts/main.js"></script>	
+    				
 	</head>
 	<body>
-
-		<h1>This is a Heading</h1>
-		<p>This is a paragraph.</p>
-
+		<div class="container">
+		<section>
+			<div class="row">
+				<div class="col-md-5"><img src="logo1.png" id="logoId"> </div>
+					<div class="col-md-7">
+						<div class="input-group">
+     						 <input type="text" class="form-control" placeholder="Կազմակերպության անուն">
+ 							 <span class="input-group-btn">
+      					 	 <button class="btn btn-default" type="button">Փնտրել</button>
+					 		 </span>
+  					    </div>
+						<a href="#">Ավելացնել</a>
+ 					 </div>	
+			</div>
+		</section>		
+		<section id="core"></section>
+		<section id="add"></section>
+		<section id="single"></section>
+		<section id="edit"></section>
+		</div>
 	</body>
 </html>

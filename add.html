@@ -7,13 +7,13 @@
  						 <div class="form-group">
 						    <label for="inputName" class="col-md-6 control-label">Կազմակերպության անվանում*</label>
 							    <div class="col-md-6">
-							      <input type="text" class="form-control" id="inputName">
+							      <input type="text" class="form-control" id="inputName" required>
 							    </div>
 						  </div>
 						 <div class="form-group">
 						    <label for="sel1" class="col-md-6 control-label">Կազմակերպաիրավական տեսակ*</label>
   							<select class="col-md-6 form-control" style="width: 29.7%" id="sel1">
-								<option>Ընտրել</option>
+								<option disabled="disabled" selected>Ընտրել</option>
 								<option>ՍՊԸ</option>
 								<option>ՓԲԸ</option>
 								<option>ԲԲԸ</option>
@@ -30,7 +30,7 @@
 							<div class="form-group">
 						   	 	 <label for="sel2" class="col-md-6 control-label">Գործնեության ոլորտ*</label>
   									<select class="col-md-6 form-control" style="width: 29.7%" id="sel2">
-										<option>Ընտրել</option>
+										<option disabled="disabled" selected>Ընտրել</option>
 										<option>Շինարարություն</option>
 										<option>Ծառայություն</option>
 										<option>Արտադրություն</option>
@@ -40,7 +40,7 @@
 							<div class="form-group">
 						   		 <label for="sel3" class="col-md-6 control-label">Համայնք*</label>
   									<select class="col-md-6 form-control" style="width: 29.7%" id="sel3">
-										<option>Ընտրել</option>
+										<option disabled="disabled" selected>Ընտրել</option>
 										<option>Ստեփանակերտ</option>
 										<option>Մարտունի</option>
 										<option>Մարտակերտ</option>
@@ -75,19 +75,19 @@
 							 <div class="form-group">
 						   		 <label for="inputTel" class="col-md-6 control-label">Հեռախոս</label>
 							   		 <div class="col-md-6">
-							     		 <input type="text" class="form-control" id="inputTel">
+							     		 <input type="text" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" class="form-control" id="inputTel">
 							   		 </div>
 						 	 </div>
 							 <div class="form-group">
 						   		 <label for="inputMail" class="col-md-6 control-label">Էլ․ փոստ</label>
 							   		 <div class="col-md-6">
-							     		 <input type="text" class="form-control" id="inputMail">
+							     		 <input type="email" class="form-control" id="inputMail">
 							   		 </div>
 						 	 </div>
 							 <div class="form-group">
 						   		 <label for="inputDir" class="col-md-6 control-label">Ղեկավար</label>
 							   		 <div class="col-md-6">
-							     		 <input type="text" class="form-control" id="inputDir">
+							     		 <input type="text" class="form-control" id="inputDir" pattern="[A-Za-z]+>
 							   		 </div>
 						 	 </div>
 

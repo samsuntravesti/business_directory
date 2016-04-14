@@ -1,22 +1,23 @@
 body {
   color: #0000b3; }
-  body #core {
-    display: block; }
-    body #core .filter {
-      float: left;
-      margin-left: 5%;
-      margin-top: 1%;
-      border: 1px solid;
-      padding-left: 4%;
-      padding-top: 1%; }
-    body #core .result {
-      float: right;
-      border: 1px solid;
-      margin-top: 1%; }
-      body #core .result .info {
-        margin-top: 2%; }
-      body #core .result .name {
-        float: inherit; }
+  body #core .filter {
+    float: left;
+    margin-left: 5%;
+    margin-top: 1%;
+    border: 1px solid;
+    padding-left: 4%;
+    padding-top: 1%; }
+  body #core .result {
+    float: right;
+    border: 1px solid;
+    margin-top: 1%;
+    display: none;
+    overflow-y: scroll;
+    height: 420px; }
+    body #core .result .info {
+      margin-top: 2%; }
+    body #core .result .name {
+      float: inherit; }
   body #add {
     display: block; }
   body #single {

@@ -9,7 +9,7 @@
 	function database($user_name, $password, $database, $server, $title){
 		$mysqli = new mysqli($server, $user_name, $password, $database);
 		//echo '<meta charset="utf-8">';
-		$sql = 'SELECT name, number FROM businessDirectory.mytable WHERE name="'.$title.'"';
+		$sql = 'SELECT name, number FROM businessDirectory.mytable WHERE type="'.$title.'"';
 		$collation="SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'";
 		$mysqli->query($collation);
 		$result = $mysqli->query($sql);

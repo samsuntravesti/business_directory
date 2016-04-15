@@ -67,9 +67,17 @@ function getCompanyData(number) {
         var data = jQuery.parseJSON(data);
         console.log(data);
         console.log(data[0].region);
+        $('#firmName').html(data[0].name);
         $('#regionId').html(data[0].region);
         $('#addressId').html(data[0].address);
+        $('#phoneId').html(data[0].phone);
+        $('#dirId').html(data[0].director);
+        $('#postId').html(data[0].post);
+        $('#webId').html(data[0].web);
+        $('#activityId').html(data[0].activity);
+        $('#actId').html(data[0].act);
         $('#typeId').html(data[0].type);
+
       }
     });
   console.log(number);
@@ -84,3 +92,4 @@ function deleteCompany(number){
       }
   });
 }
+

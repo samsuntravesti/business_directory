@@ -3,16 +3,22 @@
 				<div class="col-md-2"> </div>
 				<div class="col-md-8 registrForm">
 					<h5>Կազմակերպության տվյալներ</h5>
-					<form class="form-horizontal">
+					<form class="form-horizontal" action="add.php" method="post">
+						 <div class="form-group">
+						    <label for="inputId" class="col-md-6 control-label">ՀՎՀՀ*</label>
+							    <div class="col-md-6">
+							      <input type="text" class="form-control" id="inputId" name="inputId" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" required>
+							    </div>
+						  </div>
  						 <div class="form-group">
 						    <label for="inputName" class="col-md-6 control-label">Կազմակերպության անվանում*</label>
 							    <div class="col-md-6">
-							      <input type="text" class="form-control" id="inputName" required>
+							      <input type="text" class="form-control" id="inputName" name="inputName" required>
 							    </div>
 						  </div>
 						 <div class="form-group">
 						    <label for="sel1" class="col-md-6 control-label">Կազմակերպաիրավական տեսակ*</label>
-  							<select class="col-md-6 form-control" style="width: 29.7%" id="sel1">
+  							<select class="col-md-6 form-control" style="width: 29.7%" id="sel1" name="inputType">
 								<option disabled="disabled" selected>Ընտրել</option>
 								<option>ՍՊԸ</option>
 								<option>ՓԲԸ</option>
@@ -29,7 +35,7 @@
 								
 							<div class="form-group">
 						   	 	 <label for="sel2" class="col-md-6 control-label">Գործնեության ոլորտ*</label>
-  									<select class="col-md-6 form-control" style="width: 29.7%" id="sel2">
+  									<select class="col-md-6 form-control" style="width: 29.7%" id="sel2" name="inputActivityType">
 										<option disabled="disabled" selected>Ընտրել</option>
 										<option>Շինարարություն</option>
 										<option>Ծառայություն</option>
@@ -39,7 +45,7 @@
 						 	 </div>
 							<div class="form-group">
 						   		 <label for="sel3" class="col-md-6 control-label">Համայնք*</label>
-  									<select class="col-md-6 form-control" style="width: 29.7%" id="sel3">
+  									<select class="col-md-6 form-control" style="width: 29.7%" id="sel3" name="inputRegion">
 										<option disabled="disabled" selected>Ընտրել</option>
 										<option>Ստեփանակերտ</option>
 										<option>Մարտունի</option>
@@ -55,45 +61,45 @@
 							 <div class="form-group">
 						   		 <label for="sel4" class="col-md-6 control-label">Գործնեություն</label>
 							   		 <div class="col-md-6">
-							     		 <input type="text" class="form-control" id="sel4">
+							     		 <input type="text" class="form-control" id="sel4" name="inputAct">
 							   		 </div>
 						 	 </div>
 
 							 <div class="form-group">
 						   		 <label for="inputAddress" class="col-md-6 control-label">Հասցե</label>
 							   		 <div class="col-md-6">
-							     		 <input type="text" class="form-control" id="inputAddress">
+							     		 <input type="text" class="form-control" id="inputAddress" name="inputAddress">
 							   		 </div>
 						 	 </div>
 
 							 <div class="form-group">
 						   		 <label for="inputWeb" class="col-md-6 control-label">Վեբ֊կայք</label>
 							   		 <div class="col-md-6">
-							     		 <input type="text" class="form-control" id="inputWeb">
+							     		 <input type="text" class="form-control" id="inputWeb" name="inputWeb">
 							   		 </div>
 						 	 </div>
 							 <div class="form-group">
 						   		 <label for="inputTel" class="col-md-6 control-label">Հեռախոս</label>
 							   		 <div class="col-md-6">
-							     		 <input type="text" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" class="form-control" id="inputTel">
+							     		 <input type="text" onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;" class="form-control" id="inputTel" name="inputTel">
 							   		 </div>
 						 	 </div>
 							 <div class="form-group">
 						   		 <label for="inputMail" class="col-md-6 control-label">Էլ․ փոստ</label>
 							   		 <div class="col-md-6">
-							     		 <input type="email" class="form-control" id="inputMail">
+							     		 <input type="email" class="form-control" id="inputMail" name="inputMail">
 							   		 </div>
 						 	 </div>
 							 <div class="form-group">
 						   		 <label for="inputDir" class="col-md-6 control-label">Ղեկավար</label>
 							   		 <div class="col-md-6">
-							     		 <input type="text" class="form-control" id="inputDir" pattern="[A-Za-z]+>
+							     		 <input type="text" class="form-control" id="inputDir" pattern="[A-Za-z]+" name="inputDir">
 							   		 </div>
 						 	 </div>
 
 					</form>
 					<div class="col-md-6"></div>
-					<input class="btn btn-default" type="submit" value="Ավելացնել">
+					<input class="btn btn-default" type="submit" value="Ավելացնել" onclick="addCompany()" name="add_company" id="add_company" >
 				 </div>
 				<div class="col-md-2"> </div>
 			</div>

@@ -35,7 +35,7 @@ $(document).ready(function() {
           var i, n;
           var obj = jQuery.parseJSON(data);
           for (i = 0; i < obj.length; ++i) {
-            $('#resultId ol').append('<li><div class="info"><a onclick="getCompanyData(' + obj[i].number + ');" class="name" id="' + obj[i].number + '">' + obj[i].name + '</a><span class="glyphicon glyphicon-pencil" id="editdata" style="float: right; margin-right: 3%"></span><span onclick="deleteCompany(' + obj[i].number + ');" class="glyphicon glyphicon-trash" style="float: right" id="' + obj[i].number + '"></span></div></li>');
+            $('#resultId ol').append('<li><div class="info"><a onclick="getCompanyData(' + obj[i].number + ');" class="name" id="' + obj[i].number + '">' + obj[i].name + '</a><span class="glyphicon glyphicon-pencil" onclick="editCompany(' + obj[i].number + ')" id="' + obj[i].number + '" style="float: right; margin-right: 3%"></span><span onclick="deleteCompany(' + obj[i].number + ');" class="glyphicon glyphicon-trash" style="float: right" id="' + obj[i].number + '"></span></div></li>');
           }
           $("#search").val("");
         }
@@ -88,8 +88,49 @@ function deleteCompany(number){
       url: "api/delete.php",
       data: "number=" + number,
       success: function(data){
-        alert("Hello");
+        alert("You have just deleted 1 item!");
       }
   });
 }
-
+function editCompany(number){
+  single();
+  $.ajax({
+    url: "api/single.php",
+    type: "get",
+    data: "number=" + number,
+    dataType: "json",
+    success: function(data){
+      
+    }
+  });
+}
+function add(){
+  $("#core").empty();
+  $("#edit").empty();
+  $("#single").empty();
+  $("#add").load("add.html");
+}
+function addCompany(){
+    $('#add_company').click(function() {
+      alert('min pen');
+  //    var id = $('#inputId').val();
+   //   var name = $('#inputName').val();
+ //     var type = $('#sel1').val();
+  //    var actType = $('#sel2').val();
+  //    var region = $('#sel3').val();
+   //   var act = $('#sel4').val();
+   //   var address = $('#inputAddress').val();
+   //   var website = $('#inputWeb').val();
+   //   var phone = $('#inputTel').val();
+    //  var email = $('#inputMail').val();
+   //   var direct = $('#inputDir').val();
+ //     $.ajax({
+ //         type: "POST",        
+   //       url: "api/add.php",
+    //      data: {"number": id, 'name=':name, 'inputType=': type, 'inputActivityType=': actType, 'inputRegion=': region, 'inputAct=': act, 'inputAddress=': address, 'inputWeb=': website, 'inputTel=': phone, 'inputMail=': email, 'inputDir=': direct},
+     //     success: function(data) {
+    //          alert('data has been stored to database');
+       //   }
+      });
+ // });
+}

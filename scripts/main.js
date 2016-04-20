@@ -1,11 +1,35 @@
 $(document).ready(function() {
   $("#core").load("core.html");
-  $("#core").on("click", "#editdata", function() {
+
+ // $('#core .col-md-3.filter').click(function(){
+
+    /*var i;
+        for(i=0; i<8; i++){
+          var reg = $('input:checked')[i].value;
+          console.log(reg);
+        }*/
+    /*$.ajax({
+      type: "get",
+      url: "api/filter.php",
+      data: "region=" + reg,
+      success: function(data){  
+        alert(reg);
+      }
+    });*/
+//  });
+  $('#search').keyup(function(e) {
+    if (e.keyCode == 13) {
+      search();
+      $("#resultId").css("display", "block");
+    }
+  });
+});
+/*  $("#core").on("click", "#editdata", function() {
     $("#core").empty();
     $("#add").empty();
     $("#single").empty();
     $("#edit").load('edit.html');
-  });
+  });*/
   $("#logoId").click(function() {
     $("#add").empty();
     $("#edit").empty();
@@ -22,9 +46,9 @@ $(document).ready(function() {
 */
 
   // search function
-  var number;
+  var number, title;
   function search() {
-    var title = $("#search").val();
+    title = $("#search").val();
     if (title != "") {
     //  $("#resultId").html("<img alt="ajax search" src='ajax-loader.gif'/>");
       $.ajax({
@@ -37,18 +61,12 @@ $(document).ready(function() {
           for (i = 0; i < obj.length; ++i) {
             $('#resultId ol').append('<li><div class="info"><a onclick="getCompanyData(' + obj[i].number + ');" class="name" id="' + obj[i].number + '">' + obj[i].name + '</a><span class="glyphicon glyphicon-pencil" onclick="editCompany(' + obj[i].number + ')" id="' + obj[i].number + '" style="float: right; margin-right: 5%"></span><span onclick="deleteCompany(' + obj[i].number + ');" class="glyphicon glyphicon-trash" style="float: right" id="' + obj[i].number + '"></span></div></li>');
           }
-          $("#search").val("");
+      
         }
       });
     }
   }
-  $('#search').keyup(function(e) {
-    if (e.keyCode == 13) {
-      search();
-      $("#resultId").css("display", "block");
-    }
-  });
-});
+
 
 function single() {
     $("#core").empty();
@@ -82,6 +100,7 @@ function getCompanyData(number) {
     });
   console.log(number);
 }
+
 function refresh(){
   $("#core").load("core.html");
 }
@@ -115,7 +134,6 @@ function add(){
 }
 function addCompany(){
 //    $('#add_company').click(function() {
-     
       var id = $('#inputId').val();
       var name = $('#inputName').val();
       var type = $('#sel1').val();
@@ -140,4 +158,26 @@ function addCompany(){
       });
   //});
 }
-
+var title, region;
+function region(region_name) {
+  var i, n, obj;
+  title = $("#search").val();
+   $.ajax({
+      type: "get",
+      url: "api/filter.php",
+      data: {"title": title, "region": region_name},
+      success: function(data){
+        if(Object.keys(data).length !== 0){
+        console.log(data);
+        $('#resultId ol').empty();  
+        obj = jQuery.parseJSON(data);
+        for (i = 0; i < obj.length; ++i) {
+          $('#resultId ol').append('<li><div class="info"><a onclick="getCompanyData(' + obj[i].number + ');" class="name" id="' + obj[i].number + '">' + obj[i].name + '</a><span class="glyphicon glyphicon-pencil" onclick="editCompany(' + obj[i].number + ')" id="' + obj[i].number + '" style="float: right; margin-right: 5%"></span><span onclick="deleteCompany(' + obj[i].number + ');" class="glyphicon glyphicon-trash" style="float: right" id="' + obj[i].number + '"></span></div></li>');
+        }
+        }else{
+          //$("#resultId")․append("<h1>No result!</h1>");
+         //alert("No result");
+        }
+      }
+});
+}

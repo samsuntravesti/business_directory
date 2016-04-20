@@ -13,13 +13,16 @@ body {
     margin-top: 1%;
     display: none;
     overflow-y: scroll;
-    height: 420px;
+    height: 412px;
     margin-right: 9%;
     width: 50%; }
     body #core .result .info {
       margin-top: 2%; }
     body #core .result .name {
-      float: inherit; }
+      float: inherit;
+      cursor: pointer; }
+    body #core .result .glyphicon {
+      cursor: pointer; }
   body #add {
     display: block; }
   body #single {
@@ -102,7 +105,8 @@ h5 {
 img {
   width: 80%;
   margin-top: -4%;
-  margin-left: 19%; }
+  margin-left: 19%;
+  cursor: pointer; }
 
 .form-horizontal {
   margin-top: 4%; }

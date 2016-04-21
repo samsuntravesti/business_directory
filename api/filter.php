@@ -25,9 +25,9 @@ $user_name = "root";
 		    while($row = $result->fetch_assoc()) {
 		    	array_push($arr, $row);
 		    }
-		} /*else {
-		    echo "0 results";
-		}*/
+		} else {
+		    array_push($arr);
+		}
 		$mysqli->close();
 		return json_encode($arr, JSON_UNESCAPED_UNICODE);
 	}

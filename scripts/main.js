@@ -23,6 +23,13 @@ $(document).ready(function() {
       $("#resultId").css("display", "block");
     }
   });
+
+/*   $("#logoId").click(function() {
+    $("#add").empty();
+    $("#edit").empty();
+    $("#single").empty();
+    $("#core").load("core.html");
+  });*/
 });
 /*  $("#core").on("click", "#editdata", function() {
     $("#core").empty();
@@ -30,20 +37,8 @@ $(document).ready(function() {
     $("#single").empty();
     $("#edit").load('edit.html');
   });*/
-  $("#logoId").click(function() {
-    $("#add").empty();
-    $("#edit").empty();
-    $("#single").empty();
-    $("#core").load("core.html");
-  });
-  /*
-  $("#core").on("click", ".name", function() {
-    $("#add").empty();
-    $("#edit").empty();
-    $("#core").empty();
-    $("#single").load("single.html");
-  });
-*/
+ 
+
 
   // search function
   var number, title;
@@ -85,6 +80,7 @@ function getCompanyData(number) {
         var data = jQuery.parseJSON(data);
        // console.log(data);
       //  console.log(data[0].region);
+      
         $('#firmName').html(data[0].name);
         $('#regionId').html(data[0].region);
         $('#addressId').html(data[0].address);
@@ -145,17 +141,19 @@ function addCompany(){
       var phone = $('#inputTel').val();
       var email = $('#inputMail').val();
       var direct = $('#inputDir').val();
-      $.ajax({
+      if(id !== "" & name !== "" & type !== "" & region !== ""){
+      $.ajax({ 
           type: "GET",        
           url: "api/add.php",
           data: {'number': id, 'name':name, 'inputType': type, 'inputActivityType': actType, 'inputRegion': region, 'inputAct': act, 'inputAddress': address, 'inputWeb': website, 'inputTel': phone, 'inputMail': email, 'inputDir': direct},
           success: function(data) {
-              alert('data has been stored to database');
+              alert('Data has been stored to database successfully');
               $( '#formId' ).each(function(){
                 this.reset();
               });
           }
       });
+    }else{ alert("Fill the required fields!!"); }
   //});
 }
 var title, region;
@@ -167,17 +165,22 @@ function region(region_name) {
       url: "api/filter.php",
       data: {"title": title, "region": region_name},
       success: function(data){
-        if(Object.keys(data).length !== 0){
+       
         console.log(data);
         $('#resultId ol').empty();  
         obj = jQuery.parseJSON(data);
+         if(Object.keys(obj).length !== 0){
         for (i = 0; i < obj.length; ++i) {
           $('#resultId ol').append('<li><div class="info"><a onclick="getCompanyData(' + obj[i].number + ');" class="name" id="' + obj[i].number + '">' + obj[i].name + '</a><span class="glyphicon glyphicon-pencil" onclick="editCompany(' + obj[i].number + ')" id="' + obj[i].number + '" style="float: right; margin-right: 5%"></span><span onclick="deleteCompany(' + obj[i].number + ');" class="glyphicon glyphicon-trash" style="float: right" id="' + obj[i].number + '"></span></div></li>');
         }
         }else{
           //$("#resultId")․append("<h1>No result!</h1>");
-         //alert("No result");
+         alert("No result");
         }
       }
 });
 }
+
+
+
+

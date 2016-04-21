@@ -19,9 +19,9 @@
 		    while($row = $result->fetch_assoc()) {
 		    	array_push($arr, $row);
 		    }
-		}/* else {
+		} else {
 		    echo "0 results";
-		}*/
+		}
 		$mysqli->close();
 		return json_encode($arr, JSON_UNESCAPED_UNICODE);
 	}

@@ -31,11 +31,11 @@ $(document).ready(function() {
     $("#core").load("core.html");
   });*/
 });
-/*  $("#core").on("click", "#editdata", function() {
+
+ /*$("#core").on("click", "#editdata", function() {
     $("#core").empty();
-    $("#add").empty();
     $("#single").empty();
-    $("#edit").load('edit.html');
+    $("#add").load('add.html');
   });*/
  
 
@@ -79,8 +79,7 @@ function getCompanyData(number) {
       success: function(data){
         var data = jQuery.parseJSON(data);
        // console.log(data);
-      //  console.log(data[0].region);
-      
+      //  console.log(data[0].region);  
         $('#firmName').html(data[0].name);
         $('#regionId').html(data[0].region);
         $('#addressId').html(data[0].address);
@@ -91,12 +90,11 @@ function getCompanyData(number) {
         $('#activityId').html(data[0].activity);
         $('#actId').html(data[0].details);
         $('#typeId').html(data[0].type);
-
       }
     });
   console.log(number);
 }
-
+// Data delete
 function refresh(){
   $("#core").load("core.html");
 }
@@ -111,17 +109,62 @@ function deleteCompany(number){
       }
   });
 }
-function editCompany(number){
+
+// Data edit
+function editCompany(number){ 
+  $("#core").empty();
+  $("#edit").load('edit.html');
   $.ajax({
-    url: "api/add.php",
+    url: "api/edit.php",
     type: "get",
     data: "number=" + number,
     dataType: "json",
     success: function(data){
-     
+      console.log(data);
+      $('#inputId')[0].value = data[0].number;
+      $('#inputName')[0].value = data[0].name;
+      $('#sel3')[0].value = data[0].region;
+      $('#inputAddress')[0].value = data[0].address;
+      $('#inputTel')[0].value = data[0].phone;
+      $('#inputDir')[0].value = data[0].president;
+      $('#inputMail')[0].value = data[0].email;
+      $('#inputWeb')[0].value = data[0].website;
+      $('#sel4')[0].value = data[0].activity;
+      $('#sel2')[0].value = data[0].details;
+      $('#sel1')[0].value = data[0].type;
     }
   });
 }
+// Data UPDATE
+function updateCompany(number){
+  var id = $('#inputId').val();
+  var name = $('#inputName').val();
+  var type = $('#sel1').val();
+  var actType = $('#sel2').val();
+  var region = $('#sel3').val();
+  var act = $('#sel4').val();
+  var address = $('#inputAddress').val();
+  var website = $('#inputWeb').val();
+  var phone = $('#inputTel').val();
+  var email = $('#inputMail').val();
+  var direct = $('#inputDir').val();
+  if(id !== "" & name !== "" & type !== "" & region !== ""){
+  $.ajax({ 
+      type: "GET",        
+      url: "api/update.php",
+      data: {'number': id, 'name':name, 'inputType': type, 'inputActivityType': actType, 'inputRegion': region, 'inputAct': act, 'inputAddress': address, 'inputWeb': website, 'inputTel': phone, 'inputMail': email, 'inputDir': direct},
+      success: function(data) {
+          alert('Data has been updated successfully!');
+          $( '#formId' ).each(function(){
+            this.reset();
+          });
+      }
+  });
+}else{ alert("Fill the required fields!!"); }
+}
+
+// Data add 
+
 function add(){
   $("#core").empty();
   $("#edit").empty();
@@ -129,7 +172,6 @@ function add(){
   $("#add").load("add.html");
 }
 function addCompany(){
-//    $('#add_company').click(function() {
       var id = $('#inputId').val();
       var name = $('#inputName').val();
       var type = $('#sel1').val();
@@ -154,8 +196,9 @@ function addCompany(){
           }
       });
     }else{ alert("Fill the required fields!!"); }
-  //});
 }
+
+//  FILTER
 var title, region;
 function region(region_name) {
   var i, n, obj;

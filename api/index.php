@@ -9,6 +9,9 @@
 	function database($user_name, $password, $database, $server, $title){
 		$mysqli = new mysqli($server, $user_name, $password, $database);
 		//echo '<meta charset="utf-8">';
+		if($title == ""){
+			echo "No result!";
+		}else{
 		$sql = 'SELECT name, number FROM businessDirectory.mytable WHERE type="'.$title.'"';
 		$collation="SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'";
 		$mysqli->query($collation);
@@ -24,6 +27,7 @@
 		}
 		$mysqli->close();
 		return json_encode($arr, JSON_UNESCAPED_UNICODE);
+	}
 	}
 	echo database($user_name, $password, $database, $server, $title);
 ?>

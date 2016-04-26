@@ -154,10 +154,10 @@ function updateCompany(number){
       url: "api/update.php",
       data: {'number': id, 'name':name, 'inputType': type, 'inputActivityType': actType, 'inputRegion': region, 'inputAct': act, 'inputAddress': address, 'inputWeb': website, 'inputTel': phone, 'inputMail': email, 'inputDir': direct},
       success: function(data) {
-          alert('Data has been updated successfully!');
-          $( '#formId' ).each(function(){
-            this.reset();
-          });
+        alert('Data has been updated successfully!');
+        $( '#formId' ).each(function(){
+          this.reset();
+        });
       }
   });
 }else{ alert("Fill the required fields!!"); }
@@ -201,14 +201,13 @@ function addCompany(){
 //  FILTER
 var title, region;
 function region(region_name) {
-  var i, n, obj;
+  var i, obj;
   title = $("#search").val();
    $.ajax({
       type: "get",
       url: "api/filter.php",
       data: {"title": title, "region": region_name},
       success: function(data){
-       
         console.log(data);
         $('#resultId ol').empty();  
         obj = jQuery.parseJSON(data);
@@ -218,6 +217,33 @@ function region(region_name) {
         }
         }else{
           //$("#resultId")․append("<h1>No result!</h1>");
+         alert("No result");
+        }
+      }
+});
+}
+var title, details, reg;
+function filter_activity(act) {
+  var i, n, obj;
+  title = $("#search").val();
+   $.ajax({
+      type: "get",
+      url: "api/filter_activity.php",
+      data: {"title": title, "details": act, "region": reg},
+      success: function(data){  
+        console.log(data);
+        $('#resultId ol').empty();  
+        for(n = 0; n < 8; ++n){
+         if(document.getElementsByName('check[]')[n].checked == true){
+          reg = document.getElementsByName('check[]')[n].value;
+         }
+        }
+        obj = jQuery.parseJSON(data);
+         if(Object.keys(obj).length !== 0){
+        for (i = 0; i < obj.length; ++i) {
+          $('#resultId ol').append('<li><div class="info"><a onclick="getCompanyData(' + obj[i].number + ');" class="name" id="' + obj[i].number + '">' + obj[i].name + '</a><span class="glyphicon glyphicon-pencil" onclick="editCompany(' + obj[i].number + ')" id="' + obj[i].number + '" style="float: right; margin-right: 5%"></span><span onclick="deleteCompany(' + obj[i].number + ');" class="glyphicon glyphicon-trash" style="float: right" id="' + obj[i].number + '"></span></div></li>');
+        }
+        }else{
          alert("No result");
         }
       }

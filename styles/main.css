@@ -26,15 +26,17 @@ body {
   body #add {
     display: block; }
   body #addbutton {
-    width: 35%;
-    margin-top: -38%;
-    margin-left: 70%; }
+    width: 32%;
+    margin-top: -10%;
+    margin-left: 34%; }
   body #single {
     display: block; }
     body #single #firmName {
       margin-left: 19%;
       font-size: 28px;
-      width: 61%; }
+      width: 61%;
+      text-align: center;
+      color: firebrick; }
     body #single .dataName {
       border: 1px solid;
       padding: 2%;

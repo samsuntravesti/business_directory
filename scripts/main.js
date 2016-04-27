@@ -1,51 +1,18 @@
 $(document).ready(function() {
   $("#core").load("core.html");
-
- // $('#core .col-md-3.filter').click(function(){
-
-    /*var i;
-        for(i=0; i<8; i++){
-          var reg = $('input:checked')[i].value;
-          console.log(reg);
-        }*/
-    /*$.ajax({
-      type: "get",
-      url: "api/filter.php",
-      data: "region=" + reg,
-      success: function(data){  
-        alert(reg);
-      }
-    });*/
-//  });
   $('#search').keyup(function(e) {
     if (e.keyCode == 13) {
       search();
       $("#resultId").css("display", "block");
     }
   });
-
-/*   $("#logoId").click(function() {
-    $("#add").empty();
-    $("#edit").empty();
-    $("#single").empty();
-    $("#core").load("core.html");
-  });*/
 });
-
- /*$("#core").on("click", "#editdata", function() {
-    $("#core").empty();
-    $("#single").empty();
-    $("#add").load('add.html');
-  });*/
- 
-
 
   // search function
   var number, title;
   function search() {
     title = $("#search").val();
     if (title != "") {
-    //  $("#resultId").html("<img alt="ajax search" src='ajax-loader.gif'/>");
       $.ajax({
         type: "get",
         url: "api/index.php",
@@ -55,13 +22,11 @@ $(document).ready(function() {
           var obj = jQuery.parseJSON(data);
           for (i = 0; i < obj.length; ++i) {
             $('#resultId ol').append('<li><div class="info"><a onclick="getCompanyData(' + obj[i].number + ');" class="name" id="' + obj[i].number + '">' + obj[i].name + '</a><span class="glyphicon glyphicon-pencil" onclick="editCompany(' + obj[i].number + ')" id="' + obj[i].number + '" style="float: right; margin-right: 5%"></span><span onclick="deleteCompany(' + obj[i].number + ');" class="glyphicon glyphicon-trash" style="float: right" id="' + obj[i].number + '"></span></div></li>');
-          }
-      
+          }   
         }
       });
     }
   }
-
 
 function single() {
     $("#core").empty();
@@ -70,6 +35,7 @@ function single() {
     $("#single").load("single.html");
 };
 
+// Data single
 function getCompanyData(number) {
   single();
     $.ajax({
@@ -199,29 +165,34 @@ function addCompany(){
 }
 
 //  FILTER
-var title, region;
+var title, region, details;
 function region(region_name) {
   var i, obj;
   title = $("#search").val();
    $.ajax({
       type: "get",
       url: "api/filter.php",
-      data: {"title": title, "region": region_name},
+      data: {"title": title, "region": region_name, "activity": details},
       success: function(data){
         console.log(data);
         $('#resultId ol').empty();  
+        for(n = 0; n < 4; ++n){
+         if(document.getElementsByName('activity[]')[n].checked == true){
+          details = document.getElementsByName('activity[]')[n].value;
+         }
+        }
         obj = jQuery.parseJSON(data);
          if(Object.keys(obj).length !== 0){
         for (i = 0; i < obj.length; ++i) {
           $('#resultId ol').append('<li><div class="info"><a onclick="getCompanyData(' + obj[i].number + ');" class="name" id="' + obj[i].number + '">' + obj[i].name + '</a><span class="glyphicon glyphicon-pencil" onclick="editCompany(' + obj[i].number + ')" id="' + obj[i].number + '" style="float: right; margin-right: 5%"></span><span onclick="deleteCompany(' + obj[i].number + ');" class="glyphicon glyphicon-trash" style="float: right" id="' + obj[i].number + '"></span></div></li>');
         }
         }else{
-          //$("#resultId")․append("<h1>No result!</h1>");
-         alert("No result");
+         alert("No result!");
         }
       }
 });
 }
+
 var title, details, reg;
 function filter_activity(act) {
   var i, n, obj;
@@ -244,7 +215,7 @@ function filter_activity(act) {
           $('#resultId ol').append('<li><div class="info"><a onclick="getCompanyData(' + obj[i].number + ');" class="name" id="' + obj[i].number + '">' + obj[i].name + '</a><span class="glyphicon glyphicon-pencil" onclick="editCompany(' + obj[i].number + ')" id="' + obj[i].number + '" style="float: right; margin-right: 5%"></span><span onclick="deleteCompany(' + obj[i].number + ');" class="glyphicon glyphicon-trash" style="float: right" id="' + obj[i].number + '"></span></div></li>');
         }
         }else{
-         alert("No result");
+         alert("No result!");
         }
       }
 });

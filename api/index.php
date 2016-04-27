@@ -1,7 +1,5 @@
 <?php
-//echo($_SERVER['REQUEST_METHOD']);
 	$title =  $_GET["title"];
-	 //print_r($_GET["title"]);
 	$user_name = "root";
 	$password = "student";
 	$database = "businessDirectory";
@@ -12,7 +10,7 @@
 		if($title == ""){
 			echo "No result!";
 		}else{
-		$sql = 'SELECT name, number FROM businessDirectory.mytable WHERE type like "%'.$title.'%"';
+		$sql = 'SELECT name, number FROM businessDirectory.mytable WHERE type = "'.$title.'"';
 		$collation="SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'";
 		$mysqli->query($collation);
 		$result = $mysqli->query($sql);

@@ -1,6 +1,4 @@
 <?php
-	//if(isset($_POST['add_product'])){
-	//print_r($_GET);
 	$user_name = "root";
 	$password = "student";
 	$database = "businessDirectory";
@@ -27,5 +25,4 @@
 		return json_encode($arr, JSON_UNESCAPED_UNICODE);
 	}
 	echo database($user_name, $password, $database, $server, $number);
-//}
 ?>

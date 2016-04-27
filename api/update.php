@@ -1,10 +1,8 @@
 <?php
-
 	$user_name = "root";
 	$password = "student";
 	$database = "businessDirectory";
 	$server = "127.0.0.1";
-
 	function database($user_name, $password, $database, $server){
 		$mysqli = new mysqli($server, $user_name, $password, $database);
 		//echo '<meta charset="utf-8">';

@@ -1,7 +1,7 @@
 <?php
 $user_name = "root";
-	$password = "student";
-	$database = "businessDirectory";
+	$password = "fanatik";
+	$database = "businessdirectory";
 	$server = "127.0.0.1";
 	$region = $_GET['region'];
 	$title = $_GET['title'];
@@ -10,7 +10,7 @@ $user_name = "root";
 		$mysqli = new mysqli($server, $user_name, $password, $database);
 		//echo '<meta charset="utf-8">';
 		if($activity == ""){
-			$sql = "SELECT name, number FROM businessDirectory.mytable WHERE region in ('".$region."') and type='". $title ."'";
+			$sql = "SELECT name, number FROM businessdirectory.mytable WHERE region in ('".$region."') and type='". $title ."'";
 				
 			$collation="SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'";
 			$mysqli->query($collation);
@@ -27,7 +27,7 @@ $user_name = "root";
 			$mysqli->close();
 			return json_encode($arr, JSON_UNESCAPED_UNICODE);
 		}elseif($activity !== ""){
-			$sql = "SELECT name, number FROM businessDirectory.mytable WHERE region in ('".$region."') and type='". $title ."' details in ('". $activity ."')";
+			$sql = "SELECT name, number FROM businessdirectory.mytable WHERE region in ('".$region."') and type='". $title ."' details in ('". $activity ."')";
 				
 			$collation="SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'";
 			$mysqli->query($collation);

@@ -1,13 +1,13 @@
 <?php
 	$user_name = "root";
-	$password = "student";
-	$database = "businessDirectory";
+	$password = "fanatik";
+	$database = "businessdirectory";
 	$server = "127.0.0.1";
 	$number =  $_GET["number"];
 	function database($user_name, $password, $database, $server, $number){
 		$mysqli = new mysqli($server, $user_name, $password, $database);
 		//echo '<meta charset="utf-8">';
-		$sql = 'SELECT * FROM businessDirectory.mytable WHERE number="'.$number.'"';
+		$sql = 'SELECT * FROM businessdirectory.mytable WHERE number="'.$number.'"';
 			
 		$collation="SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'";
 		$mysqli->query($collation);

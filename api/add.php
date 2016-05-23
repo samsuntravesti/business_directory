@@ -3,8 +3,8 @@
 
 //print_r($_GET);
 	$user_name = "root";
-	$password = "student";
-	$database = "businessDirectory";
+	$password = "fanatik";
+	$database = "businessdirectory";
 	$server = "127.0.0.1";
 	function database($user_name, $password, $database, $server){
 		$mysqli = new mysqli($server, $user_name, $password, $database);
@@ -20,7 +20,7 @@
 		$phone = $_GET['inputTel'];
 		$email = $_GET['inputMail'];
 		$president = $_GET['inputDir'];
-		$sql = 'insert INTO businessDirectory.mytable (number, name, type, region, address, activity, details, website, phone, email, president) values (\''.$number. '\' , \''.$name. '\', \''.$type. '\', \''.$region. '\', \''.$address. '\', \''.$activity. '\', \''.$detalis. '\', \''.$website. '\', \''.$phone. '\', \''.$email. '\', \''.$president. '\')';
+		$sql = 'insert INTO businessdirectory.mytable (number, name, type, region, address, activity, details, website, phone, email, president) values (\''.$number. '\' , \''.$name. '\', \''.$type. '\', \''.$region. '\', \''.$address. '\', \''.$activity. '\', \''.$detalis. '\', \''.$website. '\', \''.$phone. '\', \''.$email. '\', \''.$president. '\')';
 
 		echo $sql;
 		$collation="SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'";

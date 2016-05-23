@@ -1,7 +1,7 @@
 <?php
 	$user_name = "root";
-	$password = "student";
-	$database = "businessDirectory";
+	$password = "fanatik";
+	$database = "businessdirectory";
 	$server = "127.0.0.1";
 	function database($user_name, $password, $database, $server){
 		$mysqli = new mysqli($server, $user_name, $password, $database);
@@ -18,7 +18,7 @@
 		$email = $_GET['inputMail'];
 		$president = $_GET['inputDir'];
 
-		$sql = 'UPDATE businessDirectory.mytable SET name="'.$name.'", type="'.$type.'", region="'.$region.'", address="'.$address.'", activity="'.$activity.'", details="'.$detalis.'", website="'.$website.'", phone="'.$phone.'", email="'.$email.'", president="'.$president.'" WHERE number="'.$number.'"';
+		$sql = 'UPDATE businessdirectory.mytable SET name="'.$name.'", type="'.$type.'", region="'.$region.'", address="'.$address.'", activity="'.$activity.'", details="'.$detalis.'", website="'.$website.'", phone="'.$phone.'", email="'.$email.'", president="'.$president.'" WHERE number="'.$number.'"';
 			
 		$collation="SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'";
 		$mysqli->query($collation);

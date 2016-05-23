@@ -17,6 +17,7 @@ $(document).ready(function() {
         type: "get",
         url: "api/index.php",
         data: "title=" + title,
+        //dataType: "json",
         success: function(data) {
           var i, n;
           var obj = jQuery.parseJSON(data);

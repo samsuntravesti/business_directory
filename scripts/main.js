@@ -1,4 +1,36 @@
-$(document).ready(function() {
+
+function region_value(){
+  var checkValue = [];
+  var checked_reg = document.getElementsByName('region');
+  for(i=0; i<checked_reg.length; i++){
+    if(checked_reg[i].checked == true){ 
+        checkValue.push(checked_reg[i].value);
+        var pen = checkValue.join(' ", " ');
+    }
+  }
+  var title = document.getElementsByName('title')[0].value;
+  window.location.href = 'http://businessdirectory.com:8080/template/search.php?title=' + title + '&region=' + pen;
+  //return checkValue;
+  //console.log(checkValue);
+}
+
+function details_value(){
+  var checkValue = [];
+  var checked_det = document.getElementsByName('details');
+  for(i=0; i<checked_det.length; i++){
+    if(checked_det[i].checked == true){ 
+        checkValue.push(checked_det[i].value);
+        var act = checkValue.join(' ", " ');
+    }
+  }
+  var title = document.getElementsByName('title')[0].value;
+  window.location.href = 'http://businessdirectory.com:8080/template/search.php?title=' + title + '&details=' + act;
+  //return checkValue;
+  //console.log(checkValue);
+}
+
+
+/*$(document).ready(function() {
   $("#core").load("core.html");
   $('#search').keyup(function(e) {
     if (e.keyCode == 13) {
@@ -7,29 +39,30 @@ $(document).ready(function() {
     }
   });
 });
-
+*/
   // search function
-  var number, title;
+ /*var number, title;
   function search() {
     title = $("#search").val();
     if (title != "") {
       $.ajax({
         type: "get",
-        url: "api/index.php",
+        url: "api/functions.php",
         data: "title=" + title,
         //dataType: "json",
         success: function(data) {
-          var i, n;
+          alert('min pen');
+        var i, n;
           var obj = jQuery.parseJSON(data);
           for (i = 0; i < obj.length; ++i) {
             $('#resultId ol').append('<li><div class="info"><a onclick="getCompanyData(' + obj[i].number + ');" class="name" id="' + obj[i].number + '">' + obj[i].name + '</a><span class="glyphicon glyphicon-pencil" onclick="editCompany(' + obj[i].number + ')" id="' + obj[i].number + '" style="float: right; margin-right: 5%"></span><span onclick="deleteCompany(' + obj[i].number + ');" class="glyphicon glyphicon-trash" style="float: right" id="' + obj[i].number + '"></span></div></li>');
-          }   
+          } 
         }
       });
     }
-  }
+  }*/
 
-function single() {
+/*function single() {
     $("#core").empty();
     $("#edit").empty();
     $("#add").empty();
@@ -59,7 +92,7 @@ function getCompanyData(number) {
         $('#typeId').html(data[0].type);
       }
     });
-  console.log(number);
+  //console.log(number);
 }
 // Data delete
 function refresh(){
@@ -222,6 +255,6 @@ function filter_activity(act) {
 });
 }
 
-
+*/
 
 

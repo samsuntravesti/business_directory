@@ -17,7 +17,8 @@ body {
     margin-right: 9%;
     width: 50%; }
     body #core .result .info {
-      margin-top: 2%; }
+      margin-top: 2%;
+    }
     body #core .result .name {
       float: inherit;
       cursor: pointer; }
@@ -26,9 +27,7 @@ body {
   body #add {
     display: block; }
   body #addbutton {
-    width: 32%;
-    margin-top: -10%;
-    margin-left: 34%; }
+    margin-left: 100%; }
   body #single {
     display: block; }
     body #single #firmName {
@@ -92,10 +91,13 @@ select {
   float: left; }
 
 a {
-  float: right;
-  margin-top: 3%;
+  margin-top: 1%;
   margin-right: 4%;
   color: #0000b3; }
+
+ol{
+  line-height: 2.5;
+}
 
 .row {
   margin-top: 3%; }
@@ -122,5 +124,19 @@ img {
 
 span {
   margin-left: -9%; }
+
+#resultId{
+  padding-top: 1%;
+  width: 50%;
+  height: 83.5%;
+  border: solid 1px;
+  margin-top: 1%;
+  overflow-y: scroll;
+  margin-left: 1%;
+  height: 384px;
+}  
+.info{
+  width: 95%;
+}
 
 /*# sourceMappingURL=main.css.map */

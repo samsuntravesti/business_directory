@@ -2,16 +2,19 @@
 	require_once('/home/git/Desktop/businessDirectory/api/config.php');
  	require_once(SITE_URI . '/template/header.php');
   	require_once(SITE_URI . '/api/functions.php');
-  	$organization_type = array("Ընտրել", "Սահմանափակ պատասխանատվությամբ ընկերություն", "Պետական (իշխ.տեղ.մարմ.) ձեռնարկություն", "Պետական ոչ առևտրային կազմակերպություն", "Փակ բաժնետիրական ընկերություն", "Բաց բաժնետիրական ընկերություն", "Պետական կառավարչական հիմնարկ", "Հասարակական կազմակերպություն", "Բյուջետային ձեռնարկություն", "Անհատական ձեռնարկություն", "Ֆինանսական հաստատություն", "Դուստր ձեռնարկություն", "Արտադրական կոոպերատիվ", "Անհատ ձեռնարկատեր", "Հիմնադրամ");
-  	$activity_type = array("Ընտրել", "Շինարարություն", "Ծառայություն", "Արտադրություն", "Առևտուր");
-  	$region = array("Ընտրել", "Ստեփանակերտ","Մարտունի", "Մարտակերտ", "Ասկերան", "Շուշի", "Շահումյան", "Քաշաթաղ", "Հադրութ");
+  	$organization_type = array("", "Սահմանափակ պատասխանատվությամբ ընկերություն", "Պետական (իշխ.տեղ.մարմ.) ձեռնարկություն", "Պետական ոչ առևտրային կազմակերպություն", "Փակ բաժնետիրական ընկերություն", "Բաց բաժնետիրական ընկերություն", "Պետական կառավարչական հիմնարկ", "Հասարակական կազմակերպություն", "Բյուջետային ձեռնարկություն", "Անհատական ձեռնարկություն", "Ֆինանսական հաստատություն", "Դուստր ձեռնարկություն", "Արտադրական կոոպերատիվ", "Անհատ ձեռնարկատեր", "Հիմնադրամ");
+  	$activity_type = array("", "Շինարարություն", "Ծառայություն", "Արտադրություն", "Առևտուր");
+  	$region = array("", "Ստեփանակերտ","Մարտունի", "Մարտակերտ", "Ասկերան", "Շուշի", "Շահումյան", "Քաշաթաղ", "Հադրութ");
  	$organization = view();
-
+ 	//var_dump($organization['number']);
+ 	//var_dump($_GET['hvhh']);
+ 	//var_dump($organization);
 	if($organization == NULL){
 		$action = "Add";
 	} else {
 		$action = "Update";
 	}
+	
 ?>
 <section id="edit">
 			<div class="row">
@@ -22,7 +25,7 @@
 						 <div class="form-group">
 						    <label for="number" class="col-md-6 control-label">ՀՎՀՀ*</label>
 							    <div class="col-md-6">
-							      <input type="text" class="form-control" id="inputId" name="number" pattern="[0-9]{6,8}" onkeypress="if(isNaN( String.fromCharCode(event.keyCode) )) return false;" required="" value="<?php echo $organization['number']; ?>">
+							      <input type="text" class="form-control" id="inputId" name="hvhh"  onkeypress="if(isNaN( String.fromCharCode(event.keyCode) )) return false;"  value="<?php echo $organization['number']; ?>" required>
 							    </div>
 						  </div>
  						 <div class="form-group">
@@ -33,11 +36,16 @@
 						  </div>
 						 <div class="form-group">
 						    <label for="sel1" class="col-md-6 control-label">Կազմակերպաիրավական տեսակ*</label>
-  							<select class="col-md-6 form-control" style="width: 29.7%" id="sel1" name="inputType" required="">
+  							<select class="col-md-6 form-control" style="width: 29.7%" id="sel1" name="inputType" required="required">
   							<?php 
   							 	foreach($organization_type as $type_key => $type_value) {
   							 		$selected = ($organization['type'] == $type_value) ? ' selected': '';
-  							 		echo '<option' . $selected . '>' . $type_value . '</option>';
+  							 		/*if($type_value == "Ընտրել"){
+  							 			$disabled = "disabled";
+  							 		}else{
+  							 			$disabled = "";
+  							 		}*/
+  							 		echo '<option' . $selected . ' ' . $disabled . '>' . $type_value . '</option>';
   								}
   							?>
 							</select>
@@ -48,6 +56,7 @@
   									<select class="col-md-6 form-control" style="width: 29.7%" id="sel2" name="inputActivityType" required="">
 										<?php 
 			  							 	foreach($activity_type as $type_key => $type_value) {
+			  					
 			  							 		$selected = ($organization['details'] == $type_value) ? ' selected':'';
 			  									echo '<option' . $selected . '>' . $type_value . '</option>';
 			  								}
@@ -99,15 +108,14 @@
 							   		 </div>
 						 	 </div>
 							 <div class="form-group">
-						   		 <label for="inputDir" class="col-md-6 control-label">Ղեկավար</label>
+						   		 <label for="inputDir" class="col-md-6 control-label">Ղեկավար*</label>
 							   		 <div class="col-md-6">
-							     		 <input type="text" class="form-control" id="inputDir" onkeypress="if ( !isNaN( String.fromCharCode(event.keyCode) )) return false;" name="inputDir" required="" value="<?php echo $organization['president']; ?>">
+							     		 <input type="text" class="form-control" id="inputDir" onkeypress="if ( !isNaN( String.fromCharCode(event.keyCode) )) return false;" name="inputDir" value="<?php echo $organization['president']; ?>" required>
 							   		 </div>
 						 	 </div>
 							<div class="col-md-6"></div>
 							<input name='action' value="<?php echo $action; ?>" type="hidden">
-							<input name='number' value="<?php echo $_GET['number']; ?>" type="hidden">
-							<input class="btn btn-default" type="submit" value="<?php echo $action; ?>"  name="upd_company" id="upd_company">
+							<input class="btn btn-primary" type="submit" value="<?php echo $action; ?>"  name="upd_company" id="upd_company">
 					</form>
 
 				 </div>

@@ -31,7 +31,7 @@ body {
   body #single {
     display: block; }
     body #single #firmName {
-      margin-left: 19%;
+      margin-left: 17%;
       font-size: 28px;
       width: 61%;
       text-align: center;
@@ -39,7 +39,8 @@ body {
     body #single .dataName {
       border: 1px solid;
       padding: 2%;
-      margin-left: 20%; }
+      margin-left: 12%;
+      width: 82%; }
       body #single .dataName .leftside {
         float: left;
         text-align: end;
@@ -52,7 +53,7 @@ body {
       body #single .dataName .tvyal {
         width: 110px;
         margin-top: -33px;
-        margin-left: 10px;
+        margin-left: 40px;
         text-align: center;
         background: white; }
     body #single .picture {
@@ -82,7 +83,9 @@ select {
 .registrForm {
   border: 1px solid;
   padding-top: 4%;
-  padding-bottom: 7%; }
+  padding-bottom: 7%; 
+  margin-top: 1%;
+}
 
 .input-group {
   width: 58%;
@@ -127,7 +130,7 @@ span {
 
 #resultId{
   padding-top: 1%;
-  width: 50%;
+  width: 52%;
   height: 83.5%;
   border: solid 1px;
   margin-top: 1%;
@@ -138,5 +141,17 @@ span {
 .info{
   width: 95%;
 }
-
+#upd_company{
+  width: 13%;
+}
+#addbutton a{
+  color: white;
+  text-decoration: inherit;
+}
+/*.pagination > li > a{
+  margin-left: -10px;
+}
+.pagination{
+  width: 42%;
+}*/
 /*# sourceMappingURL=main.css.map */

@@ -4,7 +4,7 @@
 	function add(){
 		$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 		//echo '<meta charset="utf-8">';
-		$number = $_GET['number'];
+		$number = $_GET['hvhh'];	
 		$name = $_GET['name'];
 		$type = $_GET['inputType'];
 		$region = $_GET['inputRegion'];
@@ -30,23 +30,14 @@
 
 	function delete(){
 		$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-		$number =  $_GET["number"];
+		$number =  $_GET["hvhh"];
 		$sql = 'DELETE FROM businessdirectory.mytable WHERE number="'.$number.'"';
-		echo $sql;
+		//echo $sql;
 		$collation="SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'";
 		$mysqli->query($collation);
 		$result = $mysqli->query($sql);
 		$arr = array();
-		/*if ($result->num_rows > 0) {
-		    // output data of each row
-		    while($row = $result->fetch_assoc()) {
-		    	array_push($arr, $row);
-		    }
-		} else {
-		    echo "0 results";
-		}*/
 		$mysqli->close();
-		//return json_encode($arr, JSON_UNESCAPED_UNICODE);
 	}
 
 	
@@ -59,15 +50,13 @@
 		if ($type !== "") {
 			$search_options = ['type = "' . $type . '"'];
 			if ($region) {
-				array_push($search_options, 'region in ("' . $region . '")');
+				array_push($search_options, 'region in (' . $region . ')');
 			}
 			if ($details) {
-				array_push($search_options, 'details in ("' . $details . '")');
+				array_push($search_options, 'details in (' . $details . ')');
 			}
 			$sql = 'SELECT name, number FROM businessdirectory.mytable WHERE ' . implode(' AND ', $search_options);
-			/*echo $_GET["region"];
-			echo '<br>';*/
-			echo $sql; //exit;
+			//echo $sql; //exit;
 			$collation="SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'";
 			$mysqli->query($collation);
 			$result = $mysqli->query($sql);
@@ -76,17 +65,40 @@
 			    while($row = $result->fetch_assoc()) {
 			    	array_push($arr, $row);
 			    }
-			} else {
-			    echo "0 results";
 			}
 			$mysqli->close();
 			return $arr;
+			}elseif ($type == "") {
+				
+				$search_opt = [];
+				if($region){
+					array_push($search_opt, 'region in (' . $region . ')');
+				}
+				if ($details) {
+					array_push($search_opt, 'details in (' . $details . ')');
+				}
+				$sql = 'SELECT name, number FROM businessdirectory.mytable WHERE ' . implode(' AND ', $search_opt);
+				//echo $sql; //exit;
+				$collation="SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'";
+				$mysqli->query($collation);
+				$result = $mysqli->query($sql);
+	            $arr = array();
+				if ($result->num_rows > 0) {
+				    while($row = $result->fetch_assoc()) {
+				    	array_push($arr, $row);
+				    }
+				}/* else {
+				    echo "0 results";
+				}*/
+				$mysqli->close();
+				return $arr;
 			}
-	}
+			}
+	
 
 	function view(){
 		$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-		$number =  $_GET["number"];
+		$number =  $_GET["hvhh"];
 		$sql = 'SELECT * FROM businessdirectory.mytable WHERE number="'.$number.'"';
 		$collation="SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'";
 		$mysqli->query($collation);
@@ -97,7 +109,7 @@
 
 	function update(){
 		$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-		$number =  $_GET["number"];
+		$number =  $_GET["hvhh"];
 		$name = $_GET['name'];
 		$type = $_GET['inputType'];
 		$region = $_GET['inputRegion'];

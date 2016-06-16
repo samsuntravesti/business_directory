@@ -9,15 +9,16 @@
    <div class="row">
       <div class="dataName">
          <h4 class="tvyal">Տվյալներ</h4>
+                  
          <span style="margin-left:34%">Համայնք</span>	<span class="dataResult" id="regionId"><?php echo $organization['region']; ?></span> <br> <br>
          <span style="margin-left:36%">Հասցե</span>	<span class="dataResult" id="addressId"><?php echo $organization['address']; ?></span>	<br> <br>
          <span style="margin-left:38%">Հեռ․</span>  	<span class="dataResult" id="phoneId"><?php echo $organization['phone']; ?></span> <br> <br>
          <span style="margin-left:33%">Ղեկավար</span>    <span class="dataResult" id="dirId"><?php echo $organization['president']; ?></span> <br> <br>
          <span style="margin-left:34%">Էլ․ փոստ</span>    <span class="dataResult" id="postId"><?php echo $organization['email']; ?></span> <br> <br>
          <span style="margin-left:34%">Վեբ֊կայք</span>   <span class="dataResult" id="webId"><?php echo $organization['website']; ?></span> <br> <br>
-         <span style="margin-left:30%">Գործնեություն</span>   <span class="dataResult" id="activityId"><?php echo $organization['activity']; ?></span> <br> <br>	
-         <span style="margin-left:7%">Գործնեության տեսակ մեր դասակարգչով</span>   <span class="dataResult" id="actId"><?php echo $organization['details']; ?></span> <br> <br>			
-         <span style="margin-left:13%">Կազմակերպաիրավական տեսակ</span>   <span class="dataResult" id="typeId"><?php echo $organization['type']; ?></span>	 
+         <span style="margin-left:30%">Գործնեություն</span>   <span class="dataResult" id="activityId"><?php echo $organization['activity']; ?></span> <br> <br>			
+         <span style="margin-left:14%">Կազմակերպաիրավական տեսակ</span>   <span class="dataResult" id="typeId"><?php echo $organization['type']; ?></span> <br> <br> 	
+         <span style="margin-left:8%">Գործնեության տեսակ մեր դասակարգչով</span>   <span class="dataResult" id="actId"><?php echo $organization['details']; ?></span>   
       </div>
    </div>
 </section>

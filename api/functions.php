@@ -15,6 +15,7 @@
 		$phone = $_GET['inputTel'];
 		$email = $_GET['inputMail'];
 		$president = $_GET['inputDir'];
+		
 		$sql = 'insert INTO businessdirectory.mytable (number, name, type, region, address, activity, details, website, phone, email, president) values (\''.$number. '\' , \''.$name. '\', \''.$type. '\', \''.$region. '\', \''.$address. '\', \''.$activity. '\', \''.$detalis. '\', \''.$website. '\', \''.$phone. '\', \''.$email. '\', \''.$president. '\')';
 
 		//echo $sql;
@@ -47,8 +48,8 @@
 		$details = (isset($_GET["details"])) ? $_GET["details"] : '';
 		$region =  (isset($_GET["region"])) ? $_GET["region"] : '';
 
-		if ($type !== "") {
-			$search_options = ['type = "' . $type . '"'];
+/*		if ($type !== "") {
+			$search_options = ['name OR type LIKE "%' . $type . '%"'];
 			if ($region) {
 				array_push($search_options, 'region in (' . $region . ')');
 			}
@@ -68,14 +69,17 @@
 			}
 			$mysqli->close();
 			return $arr;
-			}elseif ($type == "") {
+			}elseif ($type == "") {*/
 				
 				$search_opt = [];
+				if($type){
+					array_push($search_opt, '(`name` LIKE "%' . $type . '%" OR `type` LIKE "%' . $type . '%")');
+				}
 				if($region){
-					array_push($search_opt, 'region in (' . $region . ')');
+					array_push($search_opt, 'region in ("' . $region . '")');
 				}
 				if ($details) {
-					array_push($search_opt, 'details in (' . $details . ')');
+					array_push($search_opt, 'details in ("' . $details . '")');
 				}
 				$sql = 'SELECT name, number FROM businessdirectory.mytable WHERE ' . implode(' AND ', $search_opt);
 				//echo $sql; //exit;
@@ -93,13 +97,14 @@
 				$mysqli->close();
 				return $arr;
 			}
-			}
+			//}
 	
 
 	function view(){
 		$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 		$number =  $_GET["hvhh"];
 		$sql = 'SELECT * FROM businessdirectory.mytable WHERE number="'.$number.'"';
+		echo $sql;
 		$collation="SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'";
 		$mysqli->query($collation);
 		$result = $mysqli->query($sql);
@@ -133,7 +138,7 @@
 	}
 	if (isset($_GET["action"])) {
 		$action = $_GET["action"];
-		if ($action == 'Add'){
+		if ($action == 'Ավելացնել'){
 			add();
 		} else {
 			update();

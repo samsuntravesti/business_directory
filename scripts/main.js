@@ -9,7 +9,7 @@ function region_value(){
   }
   checkValue = checkValue.join('","');
   if (checkValue) {
-    checkValue = '"' + checkValue + '"';
+    checkValue = '' + checkValue + '';
   }
   return checkValue;
 }
@@ -24,7 +24,7 @@ function details_value(){
   }
   checkValue = checkValue.join('","');
   if (checkValue) {
-    checkValue = '"' + checkValue + '"';
+    checkValue = '' + checkValue + '';
   }
   return checkValue;
 }
@@ -33,7 +33,7 @@ function search() {
   var region = region_value(),
     details = details_value(),
     title = document.getElementsByName('title')[0].value,
-    host = 'http://businessdirectory.com:8080/template/search.php',
+    host = 'http://businessdirectory.com:8080/search.php',
     search = [];
     if (title) {
       search.push("title=" + title);
@@ -56,22 +56,13 @@ $(document).ready(function() {
   $("[type='checkbox']").change(function(){
     search();
   });
+/*  $("#search").change(function(){
+    search();
+  });*/
 });
 
-
-/*$('#search').keyup(function(e) {
-    if (e.keyCode == 13) {
-      search();
-        }
-  });
-*/
-
-/*
-$('.pagination__list').paginate({
-  items_per_page: 10
-});
-*/
-
-
+function message() {
+    window.location.assign("http://businessdirectory.com:8080/modification.php");
+}
 
 

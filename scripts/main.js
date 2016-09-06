@@ -34,6 +34,7 @@ function search() {
     details = details_value(),
     title = document.getElementsByName('title')[0].value,
     host = 'http://businessdirectory.com:8080/search.php',
+    host = 'http://ec2-52-205-250-230.compute-1.amazonaws.com/search.php',
     search = [];
     if (title) {
       search.push("title=" + title);
@@ -63,6 +64,7 @@ $(document).ready(function() {
 
 function message() {
     window.location.assign("http://businessdirectory.com:8080/modification.php");
+    window.location.assign("http://ec2-52-205-250-230.compute-1.amazonaws.com/modification.php");
 }
 
 

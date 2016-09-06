@@ -28,7 +28,8 @@ body {
   body #add {
     display: block; }
   body #addbutton {
-    margin-left: 100%; }
+    margin-left: 100%;
+    margin-top: 13%; }
   body #single {
     display: block; }
     body #single #firmName {
@@ -89,6 +90,7 @@ select {
   padding-bottom: 7%; 
   margin-top: 1%;
   border: 1px ridge;
+  box-shadow: 6px 10px 10px #888888;
 }
 
 .input-group {
@@ -134,7 +136,7 @@ span {
 
 #resultId{
   padding-top: 1%;
-  width: 52%;
+  width: 55%;
   height: 83.5%;
   margin-top: 1%;
   overflow-y: scroll;

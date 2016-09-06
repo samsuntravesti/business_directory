@@ -1,5 +1,6 @@
 <?php
 	require_once('/home/git/Desktop/businessDirectory/api/config.php');
+	require_once('/var/www/html/businessDirectory/api/config.php');
  	require_once(SITE_URI . '/header.php');
  	require_once(SITE_URI . '/api/functions.php');
  	$organization = search();
@@ -17,6 +18,7 @@
 <section id="core">
 	<div class="row">
 		<form action="<?php echo  SITE_URL . '/api/functions.php' ?>" method="get"> 
+		 <form action="<?php echo  SITE_URL . '/api/functions.php' ?>" method="get">
 			<div class="col-md-3 filter">
 			<span>Ըստ շրջանի</span>
 				<?php 

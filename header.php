@@ -1,6 +1,8 @@
 <?php
 	require_once('/home/git/Desktop/businessDirectory/api/config.php');
 	require_once(SITE_URI . '/api/functions.php');
+	require_once('/var/www/html/businessDirectory/api/config.php');
+	require_once('/var/www/html/businessDirectory/api/functions.php');
 	
 ?>
 <html>
@@ -14,6 +16,7 @@
 		<script type="text/javascript" src="<?php SITE_URL ?>/scripts/bootstrap.js"></script>
 		<!-- <script type="text/javascript" src="<?php SITE_URL ?>/scripts/jQuery.paginate.js"></script>  -->
 		<script type="text/javascript" src="<?php SITE_URL ?>/scripts/main.js"></script>
+		<script type="text/javascript" src="/scripts/main.js"></script>
 	
     				
 	</head>
@@ -34,8 +37,15 @@
   					   <!-- 	<a href="<?php echo  SITE_URL . '/modification.php'?>"> -->
 						<div class="btn-group" role="group" aria-label="...">
   							<button type="button" class="btn btn-primary" id="addbutton" type="submit"><a href="<?php echo  SITE_URL . '/modification.php'?>" value="aaaaa">Ավելացնել</a></button>
+  					   <!--	 </form>  -->
+  					   <!-- 	<a href="<?php echo  SITE_URL . '/modification.php'?>"> -->
+						<div class="btn-group" role="group" aria-label="...">
+  							<button type="button" class="btn btn-primary" id="addbutton" type="submit"><a href="<?php echo  SITE_URL . '/modification.php'?>" value="aaaaa" name="addname">Ավելացնել</a></button>
   						</div>
   						<!-- </a> -->
  					 </div>	
 			</div>
+
 </section>
+</section>
+

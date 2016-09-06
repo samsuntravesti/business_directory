@@ -1,5 +1,4 @@
 <?php
-	require_once('/home/git/Desktop/businessDirectory/api/config.php');
 	require_once('/var/www/html/businessDirectory/api/config.php');
  	require_once(SITE_URI . '/header.php');
   	require_once(SITE_URI . '/api/functions.php');
@@ -9,30 +8,21 @@
  	$organization = view();
  	var_dump($organization['number']);
  	var_dump($_GET['hvhh']);
- 	//var_dump($organization['number']);
- 	//var_dump($_GET['hvhh']);
  	//var_dump($organization);
 	if($organization == NULL){
 		$action = "Ավելացնել";
 	} else {
 		$action = "Խմբագրել";
 	}
+	//var_dump($_GET["action"]);
+	
 ?>
 <section id="edit">
 
 			<div class="row">
 			<?php
 				if($_GET['upd_company'] == 'Ավելացնել'){
-					if($_GET['hvhh']==$organization['number']){
-	//var_dump($_GET["action"]);
-	
-?>
-<section id="edit">
-</form>
-			<div class="row">
-			<?php
-				if($_GET['upd_company'] == 'Ավելացնել'){
-					if($_GET['hvhh']==$organization['number'] & $_GET['name']!==$organization['name']){
+					if($_GET['hvhh']!==null & $_GET['hvhh']==$organization['number']){
 						echo "<script type='text/javascript'>alert('Այս ՀՎՀՀ արդեն գոյություն ունի։');</script>";
 						echo "<script type='text/javascript'>message();</script>";
 					}
@@ -41,14 +31,6 @@
 				<div class="col-md-2"> </div>
 				<div class="col-md-8 registrForm">
 					<h5>Կազմակերպության տվյալներ</h5>
-					<!-- <form class="form-horizontal" action="" method="get" id="formId"> -->
-						<div class="form-group">
-						    <label for="number" class="col-md-6 control-label">ՀՎՀՀ*</label>
-							    <div class="col-md-6">
-							      <input type="text" class="form-control" pattern="^[ 0-9]{8}" id="inputId" name="hvhh"  onkeypress="if(isNaN( String.fromCharCode(event.keyCode) )) return false;"  value="<?php echo $organization['number']; ?>" required>
-							    </div>
-						</div>
- 						<div class="form-group">
 					<form class="form-horizontal" action="" method="get" id="formId">
 						 <div class="form-group">
 						    <label for="inputId" class="col-md-6 control-label">ՀՎՀՀ*</label>
@@ -61,8 +43,6 @@
 							    <div class="col-md-6">
 							      <input type="text" class="form-control" id="inputName" name="name" required="" value="<?php echo $organization['name']; ?>">
 							    </div>
-						</div>
-						<div class="form-group">
 						  </div>
 						 <div class="form-group">
 						    <label for="sel1" class="col-md-6 control-label">Կազմակերպաիրավական տեսակ*</label>
@@ -140,8 +120,7 @@
 							 <div class="form-group">
 						   		 <label for="inputDir" class="col-md-6 control-label">Ղեկավար*</label>
 							   		 <div class="col-md-6">
-							     		 <input type="text" class="form-control" id="inputDir"  name="inputDir" value="<?php echo $organization['president']; ?>" pattern="^[a-zA-Z]+$" required>
-							     		 <input type="text" class="form-control" id="inputDir" onkeypress="if ( !isNaN( String.fromCharCode(event.keyCode) )) return false;"  name="inputDir" value="<?php echo $organization['president']; ?>" required>
+							     		 <input type="text" class="form-control" id="inputDir" onkeypress="if ( !isNaN( String.fromCharCode(event.keyCode) )) return false;" name="inputDir" value="<?php echo $organization['president']; ?>" required>
 							   		 </div>
 						 	 </div>
 							<div class="col-md-6"></div>
@@ -156,5 +135,3 @@
 			</div>
 </section>
 <?php  require_once(SITE_URI . '/footer.php'); ?>	
-<?php  require_once(SITE_URI . '/footer.php'); ?>	
-
